@@ -1,0 +1,393 @@
+
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(images/img01.gif) repeat-x left top;
+	font-family: verdana;
+	font-size: 12px;
+	color: #8A8A8A;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-weight: normal;
+	color: #618C04;
+}
+
+h1 { font-size: 20px; }
+
+h2 { font-size: 14px; }
+
+h3 { }
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 240%;
+	text-align: justify;
+}
+
+ul, ol { }
+
+blockquote { }
+
+a { color: #77B003; }
+
+a:hover { text-decoration: none; }
+
+a img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 7px 30px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 7px 0 0 30px;
+}
+
+hr { display: none; }
+
+.list1 {
+}
+
+.list1 li {
+	float: left;
+	line-height: normal;
+}
+
+.list1 li img {
+	margin: 0 30px 30px 0;
+}
+
+.list1 li.alt img {
+	margin-right: 0;
+}
+
+#wrapper {
+}
+
+/* Header */
+
+#header-wrapper {
+}
+
+#header {
+	width: 1100px;
+	height: 36px;
+	margin: 0 auto;
+
+}
+
+/* Menu */
+#menu {
+float: center;
+}
+#menu ul {
+list-style: none;
+}
+#menu li {
+float: left;
+color: #618C04;
+width: 149px;
+text-align: center;
+}
+#menu ul ul {
+visibility:hidden;
+width:120px;
+}
+#menu ul li:hover ul,
+#menu ul a:hover ul{
+visibility:visible;
+}
+#menu li a {
+
+height: 2em;
+width: 150px;
+display: block;
+color: #ffffff;
+text-decoration: none;
+text-align: center;
+}
+/* Page  edit sini*/
+
+#page {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 13px 150px 0px 30px;
+}
+
+
+/** LOGO */
+
+#logo {
+	width: 900px;
+	height: 115px;
+	margin: 0 auto;
+}
+
+#logo h1, #logo p {
+	margin: 0px;
+	line-height: normal;
+	font-weight: normal;
+	color: #618C04;
+}
+
+#logo p {
+	margin-top: -4px;
+	font-size: 13px;
+	color: #A8A8A8;
+}
+
+#logo h1 {
+	padding-top: 10px;
+	font-size: 30px;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #A8A8A8;
+}
+
+#logo h1 a {
+	text-decoration: none;
+	color: #618C04;
+}
+
+
+#banner {
+	padding-bottom: 20px;
+}
+
+/* Content edit sini*/
+
+#content {
+	float: center;
+	width: 1100px;
+}
+
+/* Post */
+
+.post {
+	margin-bottom: 45px;
+}
+
+.post .title {
+	height: 44px;
+	padding-left: 15px;
+	text-align: center;
+}
+
+.post .title a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #618C04;
+}
+
+.post .date {
+}
+
+.post .meta {
+	margin-top: -8px;
+	margin-left: 2px;
+	padding: 0px 30px 2px 15px;
+	border-bottom: 1px solid #D4D8CB;
+	font-family: verdana;
+	font-weight: normal;
+	font-size: 10px;
+	color: #66665E;
+}
+
+.post .meta span {
+	display: block;
+	margin-top: -10px;
+}
+
+.post .meta a { }
+
+.post .entry {
+	margin-bottom: 10px;
+	padding: 10px 15px 10px 15px;
+}
+
+.post .links {
+	display: block;
+	width: 120px;
+	height: 20px;
+	margin: 0px 0px 0px 0px; 
+	padding: 4px 0px 0px 40px;
+	background: url(images/img03.gif) no-repeat left top;
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #666666;
+}
+
+.post .comments {
+	display: block;
+	width: 120px;
+	height: 18px;
+	margin: 0px; 
+	padding: 3px 0px 0px 40px;
+	background: url(images/img07.gif) no-repeat left top;
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #961A06;
+}
+
+/* Calendar */
+
+#calendar {
+}
+
+#calendar caption {
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+#calendar table {
+	width: 100%;
+	border-collapse: collapse;
+	border-bottom: 1px solid #24130F;
+	border-left: 1px solid #24130F;
+	border-right: 1px solid #24130F;
+}
+
+#calendar thead th {
+	padding: 5px 0;
+	text-align: center;
+	border-top: 1px solid #24130F;
+	border-left: 1px solid #24130F;
+	background: #24130F;
+}
+
+#calendar tbody td {
+	padding: 5px 0;
+	text-align: center;
+	border-top: 1px solid #24130F;
+	border-left: 1px solid #24130F;
+	border-bottom: 1px solid #24130F;
+}
+
+#calendar tfoot td {
+	padding: 5px;
+	border-left: 1px solid #24130F;
+	border-bottom: 1px solid #24130F;
+}
+
+#calendar tfoot #next {
+	border-top: 1px solid #24130F;
+	text-align: right;
+}
+
+#calendar tfoot #prev {
+	border-top: 1px solid #24130F;
+}
+
+#calendar .pad {
+	border-bottom: 1px solid #24130F;
+}
+
+#calendar #today {
+	background: #24130F;
+}
+
+/* Footer */
+
+#footer {
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	padding: 0;
+	background: #E1E1E1;
+}
+
+#footer-bgcontent {
+}
+
+#footer p {
+	margin: 0;
+	padding: 30px 0px 0px 0px;
+	text-align: center;
+	line-height: normal;
+	font-size: 10px;
+}
+
+#footer a {
+}
+
+<!--untuk tabel-->
+p, td, th {
+    font: 12px verdana;
+}
+.datatable {
+    border: 1px solid #D6DDE6;
+    border-collapse: collapse;
+    
+}
+.datatable td {
+    border: 1px solid #D6DDE6;
+    padding: 4px;
+}
+.datatable th {
+    border: 1px solid #828282;
+    background-color: #BCBCBC;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 4px;
+	padding-right: 0px;
+	text-align:center;
+}
+.datatable caption {
+    font: bold 12px verdana;
+    color: #33517A;
+    text-align: left;
+    padding-top: 3px;
+    padding-bottom: 8px;
+}
+.datatable tr.altrow {
+    background-color: #DFE7F2;
+    color: #000000;
+}
+
+.error {
+color: #FF0000;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #7CCF29;
+    color: #fff;
+    font-size: 11px;
+    line-height: 18px;
+    padding: 8px 25px 8px 25px;
+}
+
+.ket{
+margin:0px 19px 0px 347px;
+}
+
+#tp_pemesan{
+margin:0px 19px 0px 513px;
+}
+
+#tp_kavling{
+margin:0px 19px 0px 513px;
+}
+
+#tp_tipe{
+margin:0px 19px 0px 513px;
+}
