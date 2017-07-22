@@ -16,23 +16,18 @@ $format_indonesia = number_format ($row['hr_jual'], 0, ',', '.');
 	//diterima hijau
 	//disimpan dalam database pemesan balik laagi
 	//SELECT `app`,`jual`,`kd_tipe` FROM `t_pemesan` LEFT JOIN `t_kavling` ON `t_pemesan`.`kd_kavling`=`t_kavling`.`kd_kavling` WHERE `t_kavling`.`kd_kavling`='160E'
-	$sql1=mysqli_query($koneksi, "SELECT `app`,`jual` FROM `t_pemesan` LEFT JOIN `t_kavling` ON `t_pemesan`.`kd_kavling`=`t_kavling`.`kd_kavling` WHERE `t_kavling`.`kd_tipe`='{$row['kd_tipe']}' ORDER BY `id_pemesan` DESC LIMIT 1")->fetch_all(MYSQLI_ASSOC);
+	$sql1=mysqli_query($koneksi, "SELECT `app`,`jual` FROM `t_pemesan` LEFT JOIN `t_kavling` ON `t_pemesan`.`kd_kavling`=`t_kavling`.`kd_kavling` WHERE `t_kavling`.`kd_tipe`='{$row['kd_tipe']}' AND `app`='0' AND `jual`='0' ORDER BY `id_pemesan` DESC LIMIT 1")->fetch_all(MYSQLI_ASSOC);
 
 	// yang belum di approved
-	if (($sql1[0]['app']==0) AND ($sql1[0]['jual']==0)) {
+	if (count($sql1) > 0) {
 		echo '<td valign="middle" border="0" bgcolor="fcff8c">';
-	}
-
-	// yang sudah di approved
-	elseif(($sql1[0]['app']==1) AND ($sql1[0]['jual']==0)) {
-		echo '<td valign="middle" border="0" bgcolor="5bc85b">';
-	}
-
-	// yang masuk database
-	elseif (($sql1[0]['app']==1) AND ($sql1[0]['jual']==1)) {
-		echo '<td valign="middle" border="0" bgcolor="e7e3e2">';
 	} else {
-		echo '<td valign="middle" border="0" bgcolor="e7e3e2">';
+		$sql1=mysqli_query($koneksi, "SELECT `app`,`jual` FROM `t_pemesan` LEFT JOIN `t_kavling` ON `t_pemesan`.`kd_kavling`=`t_kavling`.`kd_kavling` WHERE `t_kavling`.`kd_tipe`='{$row['kd_tipe']}' AND `app`='1' AND `jual`='0' ORDER BY `id_pemesan` DESC LIMIT 1")->fetch_all(MYSQLI_ASSOC);
+		if (count($sql1) > 0) {
+			echo '<td valign="middle" border="0" bgcolor="5bc85b">';
+		} else {
+			echo '<td valign="middle" border="0" bgcolor="e7e3e2">';
+		}
 	}
 
 	
