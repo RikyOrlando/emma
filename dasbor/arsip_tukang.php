@@ -27,7 +27,12 @@ function openWin() {
 			<th>Jumlah (Orang)</th>
 			<th>Jam Kerja/Hari</th>
 			<th>Biaya/Orang</th>
-			<th>Aksi</th>
+			<th>Total</th>
+			<?php
+				if ($_SESSION['masuk'] == 'admin'){
+					echo '<th>Aksi</th>';
+				}
+			?>
 		</tr>
 		<?php
 		$query= mysqli_query($koneksi, "SELECT * FROM t_tukang");
@@ -36,10 +41,14 @@ function openWin() {
 		<tr>
 			<td><?php echo $row['pekerjaan'];?></td><td><?php echo $row['jumlah'];?></td>
 			<td><?php echo substr($row['jm_kerja'],0,10);?></td><td><?php echo $row['biaya'];?></td>
+			<td><?php echo number_format($row['jumlah']*$row['biaya']);?></td>
+			<?php
+				if ($_SESSION['masuk'] == 'admin'){ ?>
 			<td align="center">
 				<a href="?page=edit_tukang&kd_tukang=<?php echo $row['kd_tukang'];?>">Edit</a>
 				<a href="?page=hapus_tukang&kd_tukang=<?php echo $row['kd_tukang'];?>" onclick="return tanya()">Hapus</a>
 			</td>
+			<?php } ?>
 		</tr>
 		<?php
 		}
@@ -48,7 +57,11 @@ function openWin() {
 		</p>
 		<table width="100%">
 		<tr>
-			<td align="left"><a href="?page=tambah_tukang" class="btn">Tambah</a></td>
+			<?php
+			if ($_SESSION['masuk'] == 'admin'){
+				echo '<td align="left"><a href="?page=tambah_tukang" class="btn">Tambah</a></td>';
+			}
+			?>
 			<td align="right"><a href="" class="btn" onclick="openWin()">Cetak</a></td>
 		</tr>
 		</table>

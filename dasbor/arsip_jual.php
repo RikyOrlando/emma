@@ -37,7 +37,11 @@ include "kon_db.php";
 		</p>
 		<table width="100%">
 			<tr>
-				<td align="left"><a href="?page=baru_jual2&baru" class="btn">Baru</a><td>
+				<?php
+				if ($_SESSION['masuk'] == 'admin'){
+					echo '<td align="left"><a href="?page=baru_jual2&baru" class="btn">Baru</a><td>';
+				}
+				?>
 				<td align="right"><a href="?page=per_tipe" class="btn">Laporan</a></td>
 			</tr>
 		</table>

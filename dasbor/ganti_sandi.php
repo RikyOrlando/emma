@@ -8,10 +8,6 @@ if (!isset($_SESSION['masuk'])) {
 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
 	<table align="center">
 		<tr>
-			<td align="left">Nama Pengguna</td>
-			<td><input name="uname" type="text" value="" required maxlength="8" size="8"/></td>
-		</tr>
-		<tr>
 			<td align="left">Kata Sandi Baru</td>
 			<td><input type="password" name="pass1" size="8" id="pass" required maxlength="8"></td>
 		</tr>
@@ -28,13 +24,12 @@ if (!isset($_SESSION['masuk'])) {
 </div>
 <?php
 if (isset($_POST['pr'])){
-$uname=$_POST['uname'];
 $pass1=$_POST['pass1'];
 $pass2=$_POST['pass2'];
 if ($pass1<>$pass2){
 echo "Password Baru Lagi Harus Sama Dengan Password Baru";
 }else{
-	$query1="select * from t_masuk where uname='$uname'";
+	$query1="select * from t_masuk where uname='" . $_SESSION['masuk'] . "'";
 	$sql1 = mysqli_query($koneksi, $query1);
 	$cek=mysqli_fetch_array($sql1);
 	if (empty($cek)) {

@@ -44,6 +44,13 @@ if (!isset($_SESSION['masuk'])){
 					<li><a href="keluar.php" onclick="return confirm('Apakah Anda yakin ?')">KELUAR</a></li>
 					<?php
 				}
+
+				else { ?>
+					<li><a href="?page=ganti_sandi">GANTI KATA SANDI</a></li>
+					<li><a href="keluar.php" onclick="return confirm('Apakah Anda yakin ?')">KELUAR</a></li>
+
+				<?php
+				}
 				?>
 			</ul>
 		</div>
