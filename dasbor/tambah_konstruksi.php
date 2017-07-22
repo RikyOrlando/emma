@@ -47,7 +47,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Konstruksi Gagal Disimpan");
 			document.location="coba_tampil.php?page=arsip_konstruksi";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

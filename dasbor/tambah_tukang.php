@@ -1,7 +1,15 @@
 <?php
 include "kon_db.php";
 if (!isset($_SESSION['masuk'])) {
-	include "periksa.php";}
+	include "periksa.php";
+}
+if ($_SESSION['masuk']=='tukang') {
+	?><script language="javascript">
+	alert("Anda Tidak Berhak Mengakses Halaman Ini !");
+	document.location="index.php";
+	</script>
+	<?php
+}
 ?>
 <div class ="entry">
 <h1 align="center">Tambah Biaya Tukang</h1>

@@ -9,7 +9,7 @@ if (isset($_GET['kd_kavling'])) {
 }
 if (!empty($kd_kavling) && $kd_kavling != "") {
 	$query = "DELETE FROM t_kavling WHERE kd_kavling='$kd_kavling'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Kavling Berhasil Dihapus");
@@ -20,7 +20,7 @@ if (!empty($kd_kavling) && $kd_kavling != "") {
 			alert("Data Kavling Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_kavling";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

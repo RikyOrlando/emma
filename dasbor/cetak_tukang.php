@@ -1,7 +1,6 @@
 <?php
 if (!isset($_SESSION['masuk'])){
 	include "periksa.php";}
-include "kon_db.php";
 if (isset($_GET['lap'])) {
 require("fpdf17/fpdf.php");
 class PDF extends FPDF
@@ -26,6 +25,7 @@ class PDF extends FPDF
 	}
 	function Content()
 	{
+	include "kon_db.php";
 	$query = "SELECT t_tukang.kd_tukang,t_tukang.pekerjaan,t_tukang.jumlah,t_tukang.jm_kerja,t_tukang.biaya from t_tukang order by kd_tukang";
 	$sql = mysqli_query($koneksi, $query);
 	$data = array();

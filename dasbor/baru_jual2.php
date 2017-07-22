@@ -1,6 +1,16 @@
 <?php
 if (!isset($_SESSION['masuk'])) {
-	include "periksa.php";}
+	include "periksa.php";
+}
+
+if ($_SESSION['masuk']!='admin') {
+	?>
+	<script language="javascript">
+	alert("Anda Tidak Berhak Mengakses Halaman Ini !");
+	document.location="index.php";
+	</script>
+	<?php
+}
 include "kon_db.php";
 if (isset($_GET['baru'])) {
 	$i=1;

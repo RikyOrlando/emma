@@ -1,13 +1,13 @@
 <?php
 if (!isset($_SESSION['masuk'])){
 	include "periksa.php";}
-include "kon_db.php";
 if (isset($_GET['ct'])) {
 require("fpdf17/fpdf.php");
 class PDF extends FPDF
 {
 	function Header()
 	{
+	include "kon_db.php";
 	$this->image('logo.png',30,15,10,10);
 	$tr= 'Perumahan CV RIZKY SEMESTA';
 	$this->SetFont('Arial','B','16');
@@ -47,6 +47,7 @@ class PDF extends FPDF
 	}
 	function Content()
 	{
+	include "kon_db.php";
 	$cbulan = $_GET['cbulan'];	
 	$cjenis = $_GET['cjenis'];
 	$tahun = $_GET['tahun'];	
