@@ -68,8 +68,8 @@ include "kon_db.php";
 			<option selected="selected"></option>
 			<?php 
 			include "kon_db.php";
-			$query4=mysql_query("select * from t_kavling where status='0' order by kd_kavling");
-			while($row=mysql_fetch_array($query4))
+			$query4=mysqli_query($koneksi, "select * from t_kavling where status='0' order by kd_kavling");
+			while($row=mysqli_fetch_array($query4))
 			{
 			?><option value="<?php  echo $row['kd_kavling']; ?>"><?php  echo $row['kd_kavling']; ?></option><?php 
 			}
@@ -133,8 +133,8 @@ if (isset($_POST['pr'])) {
 	$nama_file = $_FILES['file']['name'];
 	$dir_unggah = "dasbor/foto/";
 	$i=1;
-	$query1=mysql_query("select * from t_pemesan order by id_pemesan desc limit 0,1");
-	$sql=mysql_fetch_array($query1);
+	$query1=mysqli_query($koneksi, "select * from t_pemesan order by id_pemesan desc limit 0,1");
+	$sql=mysqli_fetch_array($query1);
 	$kodeawal=substr($sql['id_pemesan'],2,2)+1;	
 	if ($kodeawal<10){
 		$ip='P0'.$kodeawal;
@@ -148,7 +148,7 @@ if (isset($_POST['pr'])) {
 		echo "Foto Gagal Diunggah ";
 	}
 	$query2= "insert into t_pemesan values('$ip','$kd_kavling','$nama','$nik','$jkel','$tp','$ubahtgl','$alt','$status','$kerja','$telp','$bank','$nama_file','0','0')";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query ($query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Pemesan Berhasil Disimpan");
@@ -159,7 +159,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Pemesan Gagal Disimpan");
 			document.location="?page=pemesan";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

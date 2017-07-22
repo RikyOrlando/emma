@@ -119,8 +119,8 @@ if (isset($_POST['pr'])) {
 	$pintu=$_POST['epintu'];
 	$dir_unggah = "img/";
 	$i=1;
-	$query1=mysql_query("select * from t_tipe order by kd_tipe desc limit 0,1");
-	$sql=mysql_fetch_array($query1);
+	$query1=mysqli_query($koneksi, "select * from t_tipe order by kd_tipe desc limit 0,1");
+	$sql=mysqli_fetch_array($query1);
 	$kodeawal=substr($sql['kd_tipe'],1,2)+1;	
 	if ($kodeawal<10){
 		$kt='T0'.$kodeawal;
@@ -143,7 +143,7 @@ if (isset($_POST['pr'])) {
 	}
 	$query2= "insert into t_tipe values('$kt','$tipe','$harga','$dp','$kpr','$jk','$dinding','$lantai','$atap','$plafon','$pintu','$wc',
 	'$lis','$air','$struktur','$pondasi','$car','$jalan','$ket','$nama_file')";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Rumah Berhasil Disimpan");
@@ -154,7 +154,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Rumah Gagal Disimpan");
 			document.location="coba_tampil.php?page=arsip_tipe";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

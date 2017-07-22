@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['id_pegawai'])) {
 	$id_pegawai = $_GET['id_pegawai'];
-	$query2 = mysql_query("select * FROM t_pegawai WHERE id_pegawai='$id_pegawai'");
-	while($row=mysql_fetch_array($query2)){
+	$query2 = mysqli_query($koneksi, "select * FROM t_pegawai WHERE id_pegawai='$id_pegawai'");
+	while($row=mysqli_fetch_array($query2)){
 	$gmbr=$row['foto'];
 	}
 } else {
@@ -16,7 +16,7 @@ if (!empty($id_pegawai) && $id_pegawai != "") {
 	$pathfile="./foto/$gmbr";
 	(unlink($pathfile));}
 	$query = "DELETE FROM t_pegawai WHERE id_pegawai='$id_pegawai'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Pegawai Berhasil Dihapus");
@@ -27,7 +27,7 @@ if (!empty($id_pegawai) && $id_pegawai != "") {
 			alert("Data Pegawai Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_pegawai";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

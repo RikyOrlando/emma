@@ -28,8 +28,8 @@ include "periksa.php";}
 			<option selected="selected"></option>
 			<?php 
 			include "kon_db.php";
-			$query6=mysql_query("select * from t_tipe order by kd_tipe");
-			while($row=mysql_fetch_array($query6))
+			$query6=mysqli_query($koneksi, "select * from t_tipe order by kd_tipe");
+			while($row=mysqli_fetch_array($query6))
 			{
 			?><option value="<?php  echo $row['kd_tipe']; ?>"><?php  echo $row['tipe']; ?></option><?php 
 			}
@@ -57,12 +57,12 @@ if (isset($_POST['pr'])) {
 	$by=$_POST['eby'];
 	$ket=$_POST['eket'];
 	$query1= "select * from t_kavling where kd_kavling='$kt'";
-	$ada= mysql_query ($query1);
-	if (mysql_num_rows($ada)>0){
+	$ada= mysqli_query($koneksi, $query1);
+	if (mysqli_num_rows($ada)>0){
 		echo "Kode Kavling Sudah Ada, Data Kavling Gagal Disimpan";
 	}else{
 		$query2= "insert into t_kavling values('$kt','$kd_t','$luas','$lebih','$by','$ket','0')";
-		$sql = mysql_query ($query2);
+		$sql = mysqli_query($koneksi, $query2);
 		if ($sql) {
 			?><script language="javascript">
 			alert("Data Kavling Berhasil Disimpan");
@@ -73,7 +73,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Kavling Gagal Disimpan");
 			document.location="coba_tampil.php?page=arsip_kavling";
 			</script><?php
-		echo mysql_error();
+		echo mysqli_error();
 		}		
 	}
 }else{

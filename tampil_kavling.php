@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['k'])) {
 $kd_kavling = $_GET['k'];
-$query5 = mysql_query("select * FROM t_kavling WHERE kd_kavling='$kd_kavling'");
-while($row=mysql_fetch_array($query5)){
+$query5 = mysqli_query($koneksi, "select * FROM t_kavling WHERE kd_kavling='$kd_kavling'");
+while($row=mysqli_fetch_array($query5)){
 	$luas=$row['luas'];
 	$by_lebih=$row['by_lebih'];
 	$harga1 = number_format ($by_lebih, 0, ',', '.');

@@ -9,7 +9,7 @@ if (isset($_GET['kd_konstruksi'])) {
 }
 if (!empty($kd_konstruksi) && $kd_konstruksi != "") {
 	$query = "DELETE FROM t_konstruksi WHERE kd_konstruksi='$kd_konstruksi'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Konstruksi Berhasil Dihapus");
@@ -20,7 +20,7 @@ if (!empty($kd_konstruksi) && $kd_konstruksi != "") {
 			alert("Data Konstruksi Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_tukang";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

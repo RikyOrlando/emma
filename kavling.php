@@ -8,8 +8,8 @@ include "kon_db.php";
 			<tr>
 			<?php
 			$index = 0;
-			$query=mysql_query("select * from t_pemesan where app=1 order by kd_kavling");
-			while($row=mysql_fetch_array($query)) {
+			$query=mysqli_query($koneksi, "select * from t_pemesan where app=1 order by kd_kavling");
+			while($row=mysqli_fetch_array($query)) {
 			?>
 				<td valign="middle"><?php echo $row['kd_kavling'];?></td>
 				<?php
@@ -25,8 +25,8 @@ include "kon_db.php";
 			<tr>
 			<?php
 			$index1 = 0;
-			$query1=mysql_query("select * from t_kavling where status=0 order by kd_kavling");
-			while($row1=mysql_fetch_array($query1)) {
+			$query1=mysqli_query($koneksi, "select * from t_kavling where status=0 order by kd_kavling");
+			while($row1=mysqli_fetch_array($query1)) {
 			?>
 				<td valign="middle"><?php echo $row1['kd_kavling'];?> <a href="?page=detail_kavling&kd_kavling=<?php echo $row1['kd_kavling'];?>"><strong>&raquo;&raquo;Detail</strong></a></td>
 				<?php

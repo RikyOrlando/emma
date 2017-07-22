@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['id_pemesan'])) {
 	$id_pemesan = $_GET['id_pemesan'];
-	$query2 = mysql_query("select * FROM t_pemesan WHERE id_pemesan='$id_pemesan'");
-	while($row=mysql_fetch_array($query2)){
+	$query2 = mysqli_query($koneksi, "select * FROM t_pemesan WHERE id_pemesan='$id_pemesan'");
+	while($row=mysqli_fetch_array($query2)){
 	$gmbr=$row['foto'];
 	}
 } else {
@@ -16,7 +16,7 @@ if (!empty($id_pemesan) && $id_pemesan != "") {
 	$pathfile="./foto/$gmbr";
 	(unlink($pathfile));}
 	$query = "DELETE FROM t_pemesan WHERE id_pemesan='$id_pemesan'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Pemesan Berhasil Dihapus");
@@ -27,7 +27,7 @@ if (!empty($id_pemesan) && $id_pemesan != "") {
 			alert("Data Pemesan Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_pemesan";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

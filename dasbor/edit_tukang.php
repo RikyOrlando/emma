@@ -5,8 +5,8 @@ if (!isset($_SESSION['masuk'])) {
 include "kon_db.php";
 if (isset($_GET['kd_tukang'])) {
 	$kd_tukang = $_GET['kd_tukang'];
-	$query = mysql_query("select * FROM t_tukang WHERE kd_tukang='$kd_tukang'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_tukang WHERE kd_tukang='$kd_tukang'");
+	while($row=mysqli_fetch_array($query)){
 	$kerja=$row['pekerjaan'];
 	$jml=$row['jumlah'];
 	$jam=$row['jm_kerja'];
@@ -50,7 +50,7 @@ if (isset($_POST['pr'])) {
 	$jam=$_POST['ejam'];
 	$by=$_POST['eby'];
 	$query2= "update t_tukang set pekerjaan='$kerja', jumlah='$jml',jm_kerja='$jam',biaya='$by' where kd_tukang='$kd_tukang'";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Biaya Tukang Berhasil Diedit");
@@ -61,7 +61,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Biaya Tukang Gagal Diedit");
 			document.location="coba_tampil.php?page=arsip_tukang";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

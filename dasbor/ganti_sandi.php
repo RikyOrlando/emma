@@ -35,18 +35,18 @@ if ($pass1<>$pass2){
 echo "Password Baru Lagi Harus Sama Dengan Password Baru";
 }else{
 	$query1="select * from t_masuk where uname='$uname'";
-	$sql1 = mysql_query($query1);
-	$cek=mysql_fetch_array($sql1);
+	$sql1 = mysqli_query($koneksi, $query1);
+	$cek=mysqli_fetch_array($sql1);
 	if (empty($cek)) {
 		echo "Username Tidak Ada";
 	}else{
 		$query2="update t_masuk set pasw=md5('$pass2') where uname='$uname'";
-		$sql2 = mysql_query($query2);
+		$sql2 = mysqli_query($koneksi, $query2);
 		if ($sql2) {
 			echo "Password Berhasil Diubah";
 		}else{
 			echo "Password Gagal Diubah";
-			echo mysql_error(); 
+			echo mysqli_error(); 
 		}
 	}
 }	

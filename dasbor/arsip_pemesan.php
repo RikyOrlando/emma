@@ -23,8 +23,8 @@ include "kon_db.php";
 			<th>Aksi</th>
 		</tr>
 		<?php
-		$query= mysql_query("SELECT * from t_pemesan where app='0'");
-		while($row=mysql_fetch_array($query)){
+		$query= mysqli_query($koneksi, "SELECT * from t_pemesan where app='0'");
+		while($row=mysqli_fetch_array($query)){
 		?>
 		<tr>
 			<td><?php echo $row['nik'];?></td><td><?php echo $row['nama'];?></td><td><?php echo $row['kd_kavling'];?></td><td><?php echo $row['bank'];?></td>

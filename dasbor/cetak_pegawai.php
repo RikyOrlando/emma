@@ -1,7 +1,6 @@
 <?php
 if (!isset($_SESSION['masuk'])){
 	include "periksa.php";}
-include "kon_db.php";
 if (isset($_GET['lap'])) {
 require("fpdf17/fpdf.php");
 class PDF extends FPDF
@@ -26,10 +25,11 @@ class PDF extends FPDF
 	}
 	function Content()
 	{
+	include "kon_db.php";
 	$query = "SELECT t_pegawai.id_pegawai,t_pegawai.nama,t_pegawai.jns_kel,t_pegawai.tgl_lahir,substr(t_pegawai.alamat,1,20),t_pegawai.status,t_pegawai.telp from t_pegawai order by id_pegawai";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	$data = array();
-	while ($row = mysql_fetch_assoc($sql)) {
+	while ($row = mysqli_fetch_assoc($sql)) {
 		array_push($data, $row);
 	}
 	$header = array(

@@ -9,7 +9,7 @@ if (isset($_GET['kd_tukang'])) {
 }
 if (!empty($kd_tukang) && $kd_tukang != "") {
 	$query = "DELETE FROM t_tukang WHERE kd_tukang='$kd_tukang'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Biaya Tukang Berhasil Dihapus");
@@ -20,7 +20,7 @@ if (!empty($kd_tukang) && $kd_tukang != "") {
 			alert("Data Biaya Tukang Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_tukang";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

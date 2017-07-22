@@ -2,8 +2,8 @@
 include "kon_db.php";
 if (isset($_GET['kd_tipe'])) {
 	$kd_tipe = $_GET['kd_tipe'];
-	$query = mysql_query("select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
+	while($row=mysqli_fetch_array($query)){
 	$tipe=$row['tipe'];
 	$wc=$row['wc'];
 	$harga=$row['hr_jual'];

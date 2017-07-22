@@ -4,10 +4,10 @@ if (!isset($_SESSION['masuk'])) {
 include "kon_db.php";
 if (isset($_GET['kd_jual'])) {
 	$kj=$_GET['kd_jual'];
-	$query = mysql_query("SELECT t_jual.kd_jual,t_jual.id_pemesan,t_jual.kd_kavling,t_jual.kd_tipe,t_jual.tgl,t_jual.ket,t_pemesan.nama,t_pemesan.alamat,
+	$query = mysqli_query($koneksi, "SELECT t_jual.kd_jual,t_jual.id_pemesan,t_jual.kd_kavling,t_jual.kd_tipe,t_jual.tgl,t_jual.ket,t_pemesan.nama,t_pemesan.alamat,
 			t_pemesan.telp,t_kavling.luas,t_kavling.by_lebih,t_tipe.tipe,t_tipe.hr_jual FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan 
 			and t_jual.kd_kavling=t_kavling.kd_kavling and t_jual.kd_tipe=t_tipe.kd_tipe and kd_jual='$kj'");
-	while($row=mysql_fetch_array($query)){
+	while($row=mysqli_fetch_array($query)){
 	$tgl=$row['tgl'];
 	$nama=$row['nama'];
 	$alamat=$row['alamat'];

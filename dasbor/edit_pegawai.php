@@ -10,8 +10,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['id_pegawai'])) {
 	$id_pegawai = $_GET['id_pegawai'];
-	$query = mysql_query("select * FROM t_pegawai WHERE id_pegawai='$id_pegawai'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_pegawai WHERE id_pegawai='$id_pegawai'");
+	while($row=mysqli_fetch_array($query)){
 	$nama=$row['nama'];
 	$jkel=$row['jns_kel'];
 	$tp=$row['tp_lahir'];
@@ -119,7 +119,7 @@ if (isset($_POST['pr'])) {
 		}
 		$query1 = "update t_pegawai set nama='$nama',jns_kel='$jkel',tp_lahir='$tp',tgl_lahir='$ubahtgl',alamat='$alt',status='$status',telp='$telp',
 			foto='$nama_file' where id_pegawai='$id_pegawai'";
-		$sql = mysql_query ($query1);
+		$sql = mysqli_query($koneksi, $query1);
 		if ($sql) {
 			?><script language="javascript">
 			alert("Data Pegawai Berhasil Diedit");
@@ -135,7 +135,7 @@ if (isset($_POST['pr'])) {
 	}else{
 		$query1 = "update t_pegawai set nama='$nama',jns_kel='$jkel',tp_lahir='$tp',tgl_lahir='$ubahtgl',alamat='$alt',status='$status',telp='$telp'  
 			where id_pegawai='$id_pegawai'";
-		$sql = mysql_query ($query1);
+		$sql = mysqli_query($koneksi, $query1);
 		if ($sql) {
 			?><script language="javascript">
 			alert("Data Pegawai Berhasil Diedit");

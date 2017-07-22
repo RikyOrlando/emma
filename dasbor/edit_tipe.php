@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['kd_tipe'])) {
 	$kd_tipe = $_GET['kd_tipe'];
-	$query = mysql_query("select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
+	while($row=mysqli_fetch_array($query)){
 	$tipe=$row['tipe'];
 	$wc=$row['wc'];
 	$harga=$row['hr_jual'];
@@ -167,7 +167,7 @@ if (isset($_POST['pr'])){
 		$query1 = "update t_tipe set tipe='$tipe',hr_jual='$harga',dp='$dp',kpr='$kpr',jk_waktu='$jk',dinding='$dinding',lantai='$lantai',
 			atap='$atap',plafon='$plafon',pintu='$pintu',wc='$wc',listrik='$lis',air='$air',struktur='$struktur',pondasi='$pondasi',carport='$car',
 			jalan='$jalan',keterangan='$ket',gambar='$nama_file' where kd_tipe='$kd_tipe'";
-		$sql = mysql_query ($query1);
+		$sql = mysqli_query($koneksi, $query1);
 		if ($sql) {
 			?><script language="javascript">
 			alert("Tipe Rumah Berhasil Diedit");
@@ -178,13 +178,13 @@ if (isset($_POST['pr'])){
 			alert("Tipe Rumah Gagal Diedit");
 			document.location="coba_tampil.php?page=arsip_tipe";
 			</script><?php
-			echo mysql_error(); 
+			echo mysqli_error(); 
 		}
 	}else{
 		$query1 = "update t_tipe set tipe='$tipe',hr_jual='$harga',dp='$dp',kpr='$kpr',jk_waktu='$jk',dinding='$dinding',lantai='$lantai',
 			atap='$atap',plafon='$plafon',pintu='$pintu',wc='$wc',listrik='$lis',air='$air',struktur='$struktur',pondasi='$pondasi',carport='$car',
 			jalan='$jalan',keterangan='$ket' where kd_tipe='$kd_tipe'";
-		$sql = mysql_query ($query1);
+		$sql = mysqli_query($koneksi, $query1);
 		if ($sql) {
 			?><script language="javascript">
 			alert("Tipe Rumah Berhasil Diedit");
@@ -195,7 +195,7 @@ if (isset($_POST['pr'])){
 			alert("Tipe Rumah Gagal Diedit");
 			document.location="coba_tampil.php?page=arsip_tipe";
 			</script><?php
-			echo mysql_error(); 
+			echo mysqli_error(); 
 		}
 	}
 }else{

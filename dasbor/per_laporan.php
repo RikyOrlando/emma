@@ -42,8 +42,8 @@ function openWin() {
 			<td><select name="tahun">
 			<?php 
 			include "kon_db.php";
-			$query2=mysql_query("select distinct (extract(year from tgl)) as tahun from t_jual order by kd_jual");
-			while($row=mysql_fetch_array($query2))
+			$query2=mysqli_query($koneksi, "select distinct (extract(year from tgl)) as tahun from t_jual order by kd_jual");
+			while($row=mysqli_fetch_array($query2))
 			{
 			?><option value="<?php  echo $row['tahun'];?>"><?php  echo $row['tahun']; ?></option><?php 
 			}

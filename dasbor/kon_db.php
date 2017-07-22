@@ -3,8 +3,7 @@ $host = "localhost";
 $user = "root";
 $pass = "";
 $dbnm = "madina";
-$koneksi=mysql_connect("$host","$user","$pass");
-mysql_select_db("$dbnm");
+$koneksi=mysqli_connect("$host","$user","$pass","$dbnm");
 /*if ($koneksi)
 {
 	//echo "berhasil : )";

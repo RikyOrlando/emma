@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])) {
 include "kon_db.php";
 if (isset($_GET['baru'])) {
 	$i=1;
-	$query1=mysql_query("select * from t_jual order by kd_jual desc limit 0,1");
-	$sql=mysql_fetch_array($query1);
+	$query1=mysqli_query($koneksi, "select * from t_jual order by kd_jual desc limit 0,1");
+	$sql=mysqli_fetch_array($query1);
 	$kodeawal=substr($sql['kd_jual'],1,2)+1;	
 	if ($kodeawal<10){
 		$kj='J0'.$kodeawal;
@@ -56,8 +56,8 @@ function cariPembeli(str) {
 			<option selected="selected"></option>
 			<?php 
 			include "kon_db.php";
-			$query2=mysql_query("select * from t_pemesan where app='1' and jual='0'");
-			while($row=mysql_fetch_array($query2))
+			$query2=mysqli_query($koneksi, "select * from t_pemesan where app='1' and jual='0'");
+			while($row=mysqli_fetch_array($query2))
 			{
 			?><option value="<?php  echo $row['id_pemesan'];?>"><?php  echo $row['nama']; ?></option><?php 
 			}
@@ -81,10 +81,10 @@ if (isset($_POST['pr'])) {
 $tgl=date("Y-m-d");
 $id_p=$_POST['nama'];
 $query8= "insert into t_jual values('$kj','$id_p','$tgl')";
-$sql = mysql_query ($query8);
+$sql = mysqli_query($koneksi, $query8);
 if ($sql) {
 	$query9="update t_pemesan set jual='1' where id_pemesan='$id_p'";
-	$sql = mysql_query ($query9);
+	$sql = mysqli_query($koneksi, $query9);
 	if ($sql){
 	?><script language="javascript">
 		alert("Data Penjualan Berhasil Disimpan");
@@ -95,7 +95,7 @@ if ($sql) {
 		alert("Data Penjualan Gagal Disimpan");
 		document.location="coba_tampil.php?page=arsip_jual";
 		</script><?php
-	echo mysql_error(); 
+	echo mysqli_error(); 
 	}
 } else {
 unset($_POST['pr']);

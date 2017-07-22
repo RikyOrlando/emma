@@ -21,10 +21,10 @@ include "kon_db.php";
 			<th>Transfer Via</th>
 		</tr>
 		<?php
-		$query= mysql_query("SELECT t_jual.kd_jual,t_jual.id_pemesan,t_pemesan.kd_kavling,t_jual.tgl,t_pemesan.nama,t_pemesan.alamat,t_pemesan.bank,
+		$query= mysqli_query($koneksi, "SELECT t_jual.kd_jual,t_jual.id_pemesan,t_pemesan.kd_kavling,t_jual.tgl,t_pemesan.nama,t_pemesan.alamat,t_pemesan.bank,
 			t_pemesan.telp,t_kavling.luas,t_kavling.by_lebih FROM t_pemesan,t_kavling,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan 
 			and t_pemesan.kd_kavling=t_kavling.kd_kavling");
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 		?>
 		<tr>
 			<td><?php echo $row['kd_jual'];?></td><td><?php echo $row['tgl'];?></td><td><?php echo $row['nama'];?></td><td><?php echo substr($row['alamat'],0,15);?></td><td><?php echo substr($row['telp'],0,15);?></td>

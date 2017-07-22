@@ -92,8 +92,8 @@ if (isset($_POST['pr'])) {
 	$nama_file = $_FILES['file']['name'];
 	$dir_unggah = "foto/";
 	$i=1;
-	$query1=mysql_query("select * from t_pemesan order by id_pemesan desc limit 0,1");
-	$sql=mysql_fetch_array($query1);
+	$query1=mysqli_query($koneksi, "select * from t_pemesan order by id_pemesan desc limit 0,1");
+	$sql=mysqli_fetch_array($query1);
 	$kodeawal=substr($sql['id_pemesan'],2,2)+1;	
 	if ($kodeawal<10){
 		$ip='P0'.$kodeawal;
@@ -107,7 +107,7 @@ if (isset($_POST['pr'])) {
 		echo "Foto Gagal Diunggah ";
 	}
 	$query2= "insert into t_pemesan values('$ip','$nama','$jkel','$tp','$ubahtgl','$alt','$status','$kerja','$telp','$nama_file')";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Pemesan Berhasil Disimpan");
@@ -118,7 +118,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Pemesan Gagal Disimpan");
 			document.location="coba_tampil.php?page=arsip_pemesan";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

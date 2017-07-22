@@ -37,7 +37,7 @@ if (isset($_POST['pr'])) {
 	$jam=$_POST['ejam'];
 	$by=$_POST['eby'];
 	$i=1;
-	$query1=mysql_query("select * from t_tukang order by kd_tukang desc limit 0,1");
+	$query1=mysqli_query($koneksi, "select * from t_tukang order by kd_tukang desc limit 0,1");
 	$sql=mysql_fetch_array($query1);
 	$kodeawal=$sql['kd_tukang']+1;	
 	if ($kodeawal<10){
@@ -46,7 +46,7 @@ if (isset($_POST['pr'])) {
 		$ip=$kodeawal;
 	}
 	$query2= "insert into t_tukang values('$ip','$kerja','$jml','$jam','$by')";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Biaya Tukang Berhasil Disimpan");
@@ -57,7 +57,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Biaya Tukang Gagal Disimpan");
 			document.location="coba_tampil.php?page=arsip_tukang";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

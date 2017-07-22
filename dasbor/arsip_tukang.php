@@ -30,8 +30,8 @@ function openWin() {
 			<th>Aksi</th>
 		</tr>
 		<?php
-		$query= mysql_query("SELECT * FROM t_tukang");
-		while($row=mysql_fetch_array($query)){
+		$query= mysqli_query($koneksi, "SELECT * FROM t_tukang");
+		while($row=mysqli_fetch_array($query)){
 		?>
 		<tr>
 			<td><?php echo $row['pekerjaan'];?></td><td><?php echo $row['jumlah'];?></td>

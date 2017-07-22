@@ -2,9 +2,9 @@
 include "kon_db.php";
 if (isset($_GET['kd_kavling'])) {
 	$kd=$_GET['kd_kavling'];
-	$query = mysql_query("SELECT t_kavling.kd_kavling,t_kavling.kd_tipe,t_kavling.luas,t_kavling.lebih,t_kavling.by_lebih,t_kavling.keterangan,t_tipe.tipe FROM t_kavling,
+	$query = mysqli_query($koneksi, "SELECT t_kavling.kd_kavling,t_kavling.kd_tipe,t_kavling.luas,t_kavling.lebih,t_kavling.by_lebih,t_kavling.keterangan,t_tipe.tipe FROM t_kavling,
 			t_tipe where t_tipe.kd_tipe=t_kavling.kd_tipe and kd_kavling='$kd'");
-	while($row=mysql_fetch_array($query)){
+	while($row=mysqli_fetch_array($query)){
 	$tipe=$row['tipe'];
 	$luas=$row['luas'];
 	$lebih=$row['lebih'];

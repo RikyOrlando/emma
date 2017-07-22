@@ -5,9 +5,9 @@ if (isset($_POST['masuk'])){
 	$user	= $_POST['u_name'];
 	$pass	= $_POST['pass'];
 	if($user && $pass){
-		$cek = mysql_query("SELECT * FROM t_masuk WHERE uname='$user'");
-		if(mysql_num_rows($cek) != 0){
-			$data = mysql_fetch_assoc($cek);
+		$cek = mysqli_query($koneksi, "SELECT * FROM t_masuk WHERE uname='$user'");
+		if(mysqli_num_rows($cek) != 0){
+			$data = mysqli_fetch_assoc($cek);
 			if($user == $data['uname'] && md5($pass) == $data['pasw']){
 				$_SESSION['masuk'] = $user;
 				echo '<script> document.location.href="coba_tampil.php";</script>';

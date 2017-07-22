@@ -39,8 +39,8 @@ include "kon_db.php";
 			<th>Aksi</th>
 		</tr>
 		<?php
-		$query= mysql_query("SELECT * FROM t_tipe");
-		while($row=mysql_fetch_array($query)){
+		$query= mysqli_query($koneksi, "SELECT * FROM t_tipe");
+		while($row=mysqli_fetch_array($query)){
 		?>
 		<tr>
 			<td><?php echo $row['tipe'];?></td><td><?php echo $row['hr_jual'];?></td><td><?php echo $row['dp'];?></td><td><?php echo $row['kpr'];?></td>

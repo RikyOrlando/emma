@@ -10,8 +10,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['id_pemesan'])) {
 	$id_pemesan = $_GET['id_pemesan'];
-	$query = mysql_query("select * FROM t_pemesan WHERE id_pemesan='$id_pemesan'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_pemesan WHERE id_pemesan='$id_pemesan'");
+	while($row=mysqli_fetch_array($query)){
 	$nik=$row['nik'];
 	$kd_kavling=$row['kd_kavling'];
 	$bank=$row['bank'];
@@ -109,8 +109,8 @@ if (isset($_GET['id_pemesan'])) {
 <?php
 if (isset($_POST['pr'])) {
 	$query3= "select * from t_kavling where kd_kavling='$kd_kavling'";
-	$ada= mysql_query ($query3);
-	while ($row=mysql_fetch_array($ada)){
+	$ada= mysqli_query($koneksi, $query3);
+	while ($row=mysqli_fetch_array($ada)){
 		if ($row['status']=='1'){
 			?><script language="javascript">
 			alert("Kode Kavling Sudah Dipesan");
@@ -118,10 +118,10 @@ if (isset($_POST['pr'])) {
 			</script><?php
 		}else{
 			$query1 = "update t_pemesan set app='1' where id_pemesan='$id_pemesan'";
-			$sql = mysql_query ($query1);
+			$sql = mysqli_query($koneksi, $query1);
 			if ($sql) {
 				$query2= "update t_kavling set status='1' where kd_kavling='$kd_kavling'";
-				$sql=mysql_query ($query2);
+				$sql=mysqli_query($koneksi, $query2);
 				if (sql){
 					?><script language="javascript">
 					alert("Data Pemesan Berhasil Diterima");
@@ -132,7 +132,7 @@ if (isset($_POST['pr'])) {
 				alert("Data Pemesan Gagal Diterima");
 				document.location="coba_tampil.php?page=arsip_pemesan";
 				</script><?php
-				echo mysql_error(); 
+				echo mysqli_error(); 
 				} 
 			}
 		}
@@ -143,7 +143,7 @@ if (isset($_POST['rj'])) {
 	$pathfile="./foto/$foto";
 	(unlink($pathfile));
 	$query1 = "delete from t_pemesan where id_pemesan='$id_pemesan'";
-	$sql = mysql_query ($query1);
+	$sql = mysqli_query($koneksi, $query1);
 	if ($sql) {
 		?><script language="javascript">
 		alert("Data Pemesan Berhasil Ditolak");
@@ -154,7 +154,7 @@ if (isset($_POST['rj'])) {
 		alert("Data Pemesan Gagal Ditolak");
 		document.location="coba_tampil.php?page=arsip_pemesan";
 		</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 		}	
 }else{
 	unset($_POST['rj']);

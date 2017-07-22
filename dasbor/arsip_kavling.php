@@ -27,9 +27,9 @@ include "kon_db.php";
 			<th>Aksi</th>
 		</tr>
 		<?php
-		$query= mysql_query("SELECT t_kavling.kd_kavling,t_kavling.kd_tipe,t_kavling.luas,t_kavling.lebih,t_kavling.by_lebih,t_kavling.keterangan,t_tipe.tipe FROM t_kavling,
+		$query= mysqli_query($koneksi, "SELECT t_kavling.kd_kavling,t_kavling.kd_tipe,t_kavling.luas,t_kavling.lebih,t_kavling.by_lebih,t_kavling.keterangan,t_tipe.tipe FROM t_kavling,
 			t_tipe where t_tipe.kd_tipe=t_kavling.kd_tipe order by t_kavling.kd_kavling");
-		while($row=mysql_fetch_array($query)){
+		while($row=mysqli_fetch_array($query)){
 		?>
 		<tr>
 			<td><?php echo $row['kd_kavling'];?></td><td><?php echo $row['tipe'];?></td><td><?php echo $row['luas'];?></td><td><?php echo $row['lebih'];?></td>

@@ -27,8 +27,8 @@ if (isset($_POST['pr'])) {
 	$kegiatan=$_POST['ekegiatan'];
 	$jw=$_POST['ejw'];
 	$i=1;
-	$query1=mysql_query("select * from t_konstruksi order by kd_konstruksi desc limit 0,1");
-	$sql=mysql_fetch_array($query1);
+	$query1=mysqli_query($koneksi, "select * from t_konstruksi order by kd_konstruksi desc limit 0,1");
+	$sql=mysqli_fetch_array($query1);
 	$kodeawal=$sql['kd_konstruksi']+1;	
 	if ($kodeawal<10){
 		$ip='0'.$kodeawal;
@@ -36,7 +36,7 @@ if (isset($_POST['pr'])) {
 		$ip=$kodeawal;
 	}
 	$query2= "insert into t_konstruksi values('$ip','$kegiatan','$jw')";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Konstruksi Berhasil Disimpan");

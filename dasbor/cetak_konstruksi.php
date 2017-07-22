@@ -27,9 +27,9 @@ class PDF extends FPDF
 	function Content()
 	{	
 	$query = "SELECT t_konstruksi.kd_konstruksi,t_konstruksi.kegiatan,t_konstruksi.jw from t_konstruksi order by kd_konstruksi";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	$data = array();
-	while ($row = mysql_fetch_assoc($sql)) {
+	while ($row = mysqli_fetch_assoc($sql)) {
 		array_push($data, $row);
 	}
 	$header = array(

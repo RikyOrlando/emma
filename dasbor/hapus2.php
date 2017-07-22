@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])){
 include "kon_db.php";
 if (isset($_GET['kd_tipe'])) {
 	$kd_tipe = $_GET['kd_tipe'];
-	$query2 = mysql_query("select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
-	while($row=mysql_fetch_array($query2)){
+	$query2 = mysqli_query($koneksi, "select * FROM t_tipe WHERE kd_tipe='$kd_tipe'");
+	while($row=mysqli_fetch_array($query2)){
 	$gmbr=$row['gambar'];
 	}
 } else {
@@ -16,7 +16,7 @@ if (!empty($kd_tipe) && $kd_tipe != "") {
 	$pathfile="./img/$gmbr";
 	(unlink($pathfile));}
 	$query = "DELETE FROM t_tipe WHERE kd_tipe='$kd_tipe'";
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Tipe Berhasil Dihapus");
@@ -27,7 +27,7 @@ if (!empty($kd_tipe) && $kd_tipe != "") {
 			alert("Data Tipe Gagal Dihapus");
 			document.location="coba_tampil.php?page=arsip_tipe";
 			</script><?php
-			echo mysql_error();
+			echo mysqli_error();
 	}
 } else {
 	die ("Anda Tidak Berhak Mengakses Halaman Ini");

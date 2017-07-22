@@ -4,8 +4,8 @@ if (!isset($_SESSION['masuk'])) {
 include "kon_db.php";
 if (isset($_GET['kd_kavling'])) {
 	$kd=$_GET['kd_kavling'];
-	$query = mysql_query("select * FROM t_kavling WHERE kd_kavling='$kd'");
-	while($row=mysql_fetch_array($query)){
+	$query = mysqli_query($koneksi, "select * FROM t_kavling WHERE kd_kavling='$kd'");
+	while($row=mysqli_fetch_array($query)){
 	$luas=$row['luas'];
 	$lebih=$row['lebih'];
 	$by=$row['by_lebih'];
@@ -40,8 +40,8 @@ if (isset($_GET['kd_kavling'])) {
 			<option selected="selected"></option>
 			<?php 
 			include "kon_db.php";
-			$query6=mysql_query("select * from t_tipe order by kd_tipe");
-			while($row=mysql_fetch_array($query6))
+			$query6=mysqli_query($koneksi, "select * from t_tipe order by kd_tipe");
+			while($row=mysqli_fetch_array($query6))
 			{
 			?><option value="<?php  echo $row['kd_tipe']; ?>"><?php  echo $row['tipe']; ?></option><?php 
 			}
@@ -68,7 +68,7 @@ if (isset($_POST['pr'])) {
 	$by=$_POST['eby'];
 	$ket=$_POST['eket'];
 	$query2= "update t_kavling set kd_tipe='$kd_t',luas='$luas',lebih='$lebih',by_lebih='$by',keterangan='$ket' where kd_kavling='$kd'";
-	$sql = mysql_query ($query2);
+	$sql = mysqli_query($koneksi, $query2);
 	if ($sql) {
 		?><script language="javascript">
 			alert("Data Kavling Berhasil Diedit");
@@ -79,7 +79,7 @@ if (isset($_POST['pr'])) {
 			alert("Data Kavling Gagal Diedit");
 			document.location="coba_tampil.php?page=arsip_kavling";
 			</script><?php
-		echo mysql_error(); 
+		echo mysqli_error(); 
 	}
 }else{
 		unset($_POST['pr']);

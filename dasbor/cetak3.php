@@ -32,8 +32,8 @@ class PDF extends FPDF
 	if ($cjenis=='Per Bulan') {
 		$pe="$cjenis $cbulan $tahun";
 	} elseif($cjenis=='Per Tipe'){
-		$query6 = mysql_query("select * FROM t_tipe WHERE kd_tipe='$kdtipe'");
-		while($row=mysql_fetch_array($query6)){
+		$query6 = mysqli_query($koneksi, "select * FROM t_tipe WHERE kd_tipe='$kdtipe'");
+		while($row=mysqli_fetch_array($query6)){
 		$tipe=$row['tipe'];
 		}
 		$pe="Tipe $tipe";		
@@ -98,29 +98,29 @@ class PDF extends FPDF
 		t_pemesan.kd_kavling,t_kavling.luas,t_kavling.by_lebih,t_kavling.kd_tipe,t_tipe.tipe,t_tipe.hr_jual FROM t_pemesan,t_kavling,t_tipe,t_jual 
 		where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-$bl-1' 
 		and '$tahun-$bl-$tgl' order by kd_jual";
-		$query2 = mysql_query("SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-$bl-1' and '$tahun-$bl-$tgl' order by kd_jual"); 
+		$query2 = mysqli_query($koneksi, "SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-$bl-1' and '$tahun-$bl-$tgl' order by kd_jual"); 
 	} elseif ($cjenis=='Per Tipe') {
 		$query = "SELECT t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.nama,substr(t_pemesan.alamat,1,20) as altm,substr(t_pemesan.telp,1,12) as telpon,
 		t_pemesan.kd_kavling,t_kavling.luas,t_kavling.by_lebih,t_kavling.kd_tipe,t_tipe.tipe,t_tipe.hr_jual FROM t_pemesan,t_kavling,t_tipe,t_jual 
 		where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_tipe.kd_tipe='$kdtipe' order by kd_jual";
-		$query2 = mysql_query("SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and  
+		$query2 = mysqli_query($koneksi, "SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and  
 		t_tipe.kd_tipe='$kdtipe' order by kd_jual");
 	} elseif ($cjenis=='Per Tahun') {
 		$query = "SELECT t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.nama,substr(t_pemesan.alamat,1,20) as altm,substr(t_pemesan.telp,1,12) as telpon,
 		t_pemesan.kd_kavling,t_kavling.luas,t_kavling.by_lebih,t_kavling.kd_tipe,t_tipe.tipe,t_tipe.hr_jual FROM t_pemesan,t_kavling,t_tipe,t_jual 
 		where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-1-1' 
 		and '$tahun-12-31' order by kd_jual";
-		$query2 = mysql_query("SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-1-1' 
+		$query2 = mysqli_query($koneksi, "SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe and t_jual.tgl between '$tahun-1-1' 
 		and '$tahun-12-31' order by kd_jual");	
 	} else {
 		$query = "SELECT t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.nama,substr(t_pemesan.alamat,1,20) as altm,substr(t_pemesan.telp,1,12) as telpon,
 		t_pemesan.kd_kavling,t_kavling.luas,t_kavling.by_lebih,t_kavling.kd_tipe,t_tipe.tipe,t_tipe.hr_jual FROM t_pemesan,t_kavling,t_tipe,t_jual 
 		where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe order by kd_jual";
-		$query2 = mysql_query("SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe");	
+		$query2 = mysqli_query($koneksi, "SELECT sum(t_tipe.hr_jual) as tot,t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.kd_kavling,t_kavling.kd_tipe FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan and t_pemesan.kd_kavling=t_kavling.kd_kavling and t_kavling.kd_tipe=t_tipe.kd_tipe");	
 	}		
-	$sql = mysql_query ($query);
+	$sql = mysqli_query($koneksi, $query);
 	$data = array();
-	while ($row = mysql_fetch_assoc($sql)) {
+	while ($row = mysqli_fetch_assoc($sql)) {
 		array_push($data, $row);
 	}
 	$header = array(
@@ -160,7 +160,7 @@ class PDF extends FPDF
 		$fill = !$fill;
 		$this->Ln();
 	}
-	$sql2=mysql_fetch_array($query2);
+	$sql2=mysqli_fetch_array($query2);
 	$total=$sql2['tot'];
 	$this->SetFillColor(227,224,224);
 	$this->SetTextColor(0);

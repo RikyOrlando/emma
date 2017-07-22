@@ -7,9 +7,9 @@ if (isset($_GET['lap'])) {
 $query = "SELECT t_jual.kd_jual,t_jual.tgl,t_jual.id_pemesan,t_pemesan.nama,substr(t_pemesan.alamat,1,20) as altm,substr(t_pemesan.telp,1,12) as telpon,t_jual.kd_kavling,
 t_kavling.luas,t_kavling.by_lebih,t_jual.kd_tipe,t_tipe.tipe,t_tipe.hr_jual,t_jual.ket FROM t_pemesan,t_kavling,t_tipe,t_jual where t_jual.id_pemesan=t_pemesan.id_pemesan 
 			and t_jual.kd_kavling=t_kavling.kd_kavling and t_jual.kd_tipe=t_tipe.kd_tipe order by kd_jual";
-$sql = mysql_query ($query);
+$sql = mysqli_query($koneksi, $query);
 $data = array();
-while ($row = mysql_fetch_assoc($sql)) {
+while ($row = mysqli_fetch_assoc($sql)) {
 	array_push($data, $row);
 }
 #setting judul laporan dan header tabel
