@@ -46,6 +46,8 @@ if (!isset($_SESSION['masuk'])){
 				}
 
 				else { ?>
+					<li><a href="?page=arsip_pemesan">CALON PEMESAN</a></li>
+					<li><a href="?page=arsip_jual">PEMESANAN</a></li>
 					<li><a href="?page=ganti_sandi">GANTI KATA SANDI</a></li>
 					<li><a href="keluar.php" onclick="return confirm('Apakah Anda yakin ?')">KELUAR</a></li>
 
