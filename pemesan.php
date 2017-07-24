@@ -69,7 +69,7 @@ include "kon_db.php";
 			<option></option>
 			<?php 
 			include "kon_db.php";
-			$query4=mysqli_query($koneksi, "select * from t_kavling where status='0' order by kd_kavling");
+			$query4=mysqli_query($koneksi, "SELECT * FROM t_kavling WHERE `kd_kavling` NOT IN (SELECT `kd_kavling` FROM `t_pemesan`) ORDER BY `kd_kavling` ASC");
 			while($row=mysqli_fetch_array($query4))
 			{
 			?><option value="<?php  echo $row['kd_kavling']; ?>"> <?php  echo $row['kd_kavling']; ?></option><?php 

@@ -40,5 +40,5 @@ if (isset($_GET['kd_kavling'])) {
 		<td><?php echo $ket?></td>
 	</tr>
 </table>
-Anda tertarik segera hubungi Marketing Galery kami <a href="?page=kontak" alt="kontak green madina ii" color="red"><strong>&raquo;&raquo;&raquo;di</strong></a>
+Anda tertarik segera hubungi Marketing Galery kami <a href="?page=pemesan" alt="kontak green madina ii" color="red"><strong>Pesan Sekarang</strong></a>
 </div>

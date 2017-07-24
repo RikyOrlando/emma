@@ -387,3 +387,19 @@ body {
 	 	margin-bottom: 2px;
 	 	display:block
 	 } 
+
+.table-kavling {
+	text-align: center;
+	color: #fff;
+}
+
+.table-kavling tr {
+	height: 40px;
+}
+.table-kavling tr td {
+	vertical-align: middle !important;
+}
+
+.kavlingan tr td {
+	vertical-align: top;
+}
