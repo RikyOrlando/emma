@@ -20,6 +20,12 @@ break;
 case "arsip_jual":
     include "arsip_jual.php";
 break;
+case "arsip_user":
+    include "arsip_user.php";
+break;
+case "tambah_user":
+    include "tambah_user.php";
+break;
 case "tambah_kavling":
 	include "tambah_kavling.php";
 break;

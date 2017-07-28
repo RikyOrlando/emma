@@ -101,12 +101,14 @@ width: 149px;
 text-align: center;
 }
 #menu ul ul {
-visibility:hidden;
-width:120px;
+	background-color: yellowgreen;
+	margin-top: 0px;
+	padding: 0;
+	position: absolute;
+	display: none;
 }
-#menu ul li:hover ul,
-#menu ul a:hover ul{
-visibility:visible;
+#menu ul li:hover ul {
+	display: block;
 }
 #menu li a {
 
@@ -116,6 +118,23 @@ display: block;
 color: #ffffff;
 text-decoration: none;
 text-align: center;
+}
+
+#menu li li a {
+	color: #fff;
+	text-align: left;
+	padding: 5px;
+	width: auto;
+	height: auto;
+}
+
+#menu li li a:hover {
+	
+	background-color: #999;
+}
+
+#menu li li {
+	float: none;
 }
 /* Page  edit sini*/
 

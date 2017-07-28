@@ -403,3 +403,7 @@ body {
 .kavlingan tr td {
 	vertical-align: top;
 }
+
+#menu li li a{
+	color: #000;
+}
