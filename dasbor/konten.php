@@ -8,6 +8,9 @@ break;
 case "arsip_pemesan":
     include "arsip_pemesan.php";
 break; 
+case "arsip_tunda":
+    include "arsip_tunda.php";
+break; 
 case "tambah_tipe":
     include "tambah_tipe.php";
 break;

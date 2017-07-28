@@ -62,7 +62,7 @@ if (!isset($_SESSION['masuk'])){
 							<li><a href="?page=arsip_tukang">BIAYA TUKANG</a></li>
 							<li><a href="?page=arsip_konstruksi">KONSTRUKSI</a></li>
 							<li><a href="?page=arsip_jual">PEMESANAN</a></li>
-							<li><a href="?page=arsip_user">DATA USER</a></li>
+							<li><a href="?page=arsip_tunda">PEMESAN BELUM SIAP</a></li>
 						<?php
 						}
 
@@ -76,7 +76,7 @@ if (!isset($_SESSION['masuk'])){
 						else { ?>
 							<li><a href="?page=arsip_pemesan">DATA PEMESAN</a></li>
 							<li><a href="?page=arsip_jual">PEMESANAN</a></li>
-
+							<li><a href="?page=arsip_tunda">PEMESAN BELUM SIAP</a></li>
 						<?php
 						}
 						?>
