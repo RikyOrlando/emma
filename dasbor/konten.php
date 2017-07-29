@@ -11,6 +11,9 @@ break;
 case "arsip_tunda":
     include "arsip_tunda.php";
 break; 
+case "pengeluaran":
+    include "arsip_pengeluaran.php";
+break; 
 case "tambah_tipe":
     include "tambah_tipe.php";
 break;
@@ -29,6 +32,9 @@ break;
 case "tambah_user":
     include "tambah_user.php";
 break;
+case "tambah_pengeluaran":
+    include "tambah_pengeluaran.php";
+break;
 case "tambah_kavling":
 	include "tambah_kavling.php";
 break;
@@ -43,6 +49,9 @@ case "hapus2":
 break;
 case "detail_pemesan":
     include "detail_pemesan.php";
+break;
+case "edit_pengeluaran":
+    include "edit_pengeluaran.php";
 break;
 case "edit_tipe":
     include "edit_tipe.php";

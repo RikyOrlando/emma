@@ -32,6 +32,7 @@ if (!isset($_SESSION['masuk'])){
 							<li><a href="?page=tambah_tukang">BIAYA TUKANG</a></li>
 							<li><a href="?page=tambah_konstruksi">KONSTRUKSI</a></li>
 							<li><a href="?page=baru_jual2&baru">JUAL PEMESANAN</a></li>
+							<li><a href="?page=tambah_pengeluaran">PENGELUARAN</a></li>
 							<li><a href="?page=tambah_user">DATA USER</a></li>
 						<?php
 						}
@@ -46,6 +47,7 @@ if (!isset($_SESSION['masuk'])){
 						else { ?>
 							<li><a href="?page=arsip_pemesan">DATA PEMESAN</a></li>
 							<li><a href="?page=baru_jual2&baru">JUAL PEMESANAN</a></li>
+							<li><a href="?page=tambah_pengeluaran">PENGELUARAN</a></li>
 
 						<?php
 						}
@@ -63,6 +65,7 @@ if (!isset($_SESSION['masuk'])){
 							<li><a href="?page=arsip_konstruksi">KONSTRUKSI</a></li>
 							<li><a href="?page=arsip_jual">PEMESANAN</a></li>
 							<li><a href="?page=arsip_tunda">PEMESAN BELUM SIAP</a></li>
+							<li><a href="?page=pengeluaran">PENGELUARAN</a></li>
 						<?php
 						}
 
@@ -77,6 +80,7 @@ if (!isset($_SESSION['masuk'])){
 							<li><a href="?page=arsip_pemesan">DATA PEMESAN</a></li>
 							<li><a href="?page=arsip_jual">PEMESANAN</a></li>
 							<li><a href="?page=arsip_tunda">PEMESAN BELUM SIAP</a></li>
+							<li><a href="?page=pengeluaran">PENGELUARAN</a></li>
 						<?php
 						}
 						?>

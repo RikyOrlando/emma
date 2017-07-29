@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 31 Jan 2017 pada 04.04
--- Versi Server: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost
+-- Generation Time: Jul 29, 2017 at 05:44 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `madina`
@@ -23,17 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jual`
+-- Table structure for table `t_jual`
 --
 
-CREATE TABLE IF NOT EXISTS `t_jual` (
+CREATE TABLE `t_jual` (
   `kd_jual` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `id_pemesan` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_jual`
+-- Dumping data for table `t_jual`
 --
 
 INSERT INTO `t_jual` (`kd_jual`, `id_pemesan`, `tgl`) VALUES
@@ -69,10 +69,10 @@ INSERT INTO `t_jual` (`kd_jual`, `id_pemesan`, `tgl`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_kavling`
+-- Table structure for table `t_kavling`
 --
 
-CREATE TABLE IF NOT EXISTS `t_kavling` (
+CREATE TABLE `t_kavling` (
   `kd_kavling` varchar(4) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `kd_tipe` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `luas` int(3) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `t_kavling` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_kavling`
+-- Dumping data for table `t_kavling`
 --
 
 INSERT INTO `t_kavling` (`kd_kavling`, `kd_tipe`, `luas`, `lebih`, `by_lebih`, `keterangan`, `status`) VALUES
@@ -95,7 +95,7 @@ INSERT INTO `t_kavling` (`kd_kavling`, `kd_tipe`, `luas`, `lebih`, `by_lebih`, `
 ('160B', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
 ('160C', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
 ('160D', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
-('160E', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
+('160E', 'T08', 240, 15, 500000, 'Sangat strategis', 1),
 ('160F', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
 ('160G', 'T08', 240, 15, 500000, 'Sangat strategis', 0),
 ('36A', 'T01', 120, 20, 500000, 'Sangat strategis', 0),
@@ -129,17 +129,17 @@ INSERT INTO `t_kavling` (`kd_kavling`, `kd_tipe`, `luas`, `lebih`, `by_lebih`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_konstruksi`
+-- Table structure for table `t_konstruksi`
 --
 
-CREATE TABLE IF NOT EXISTS `t_konstruksi` (
+CREATE TABLE `t_konstruksi` (
   `kd_konstruksi` varchar(2) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `kegiatan` varchar(20) NOT NULL,
   `jw` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_konstruksi`
+-- Dumping data for table `t_konstruksi`
 --
 
 INSERT INTO `t_konstruksi` (`kd_konstruksi`, `kegiatan`, `jw`) VALUES
@@ -153,28 +153,30 @@ INSERT INTO `t_konstruksi` (`kd_konstruksi`, `kegiatan`, `jw`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_masuk`
+-- Table structure for table `t_masuk`
 --
 
-CREATE TABLE IF NOT EXISTS `t_masuk` (
+CREATE TABLE `t_masuk` (
   `uname` varchar(8) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `pasw` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_masuk`
+-- Dumping data for table `t_masuk`
 --
 
 INSERT INTO `t_masuk` (`uname`, `pasw`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3');
+('admin', '21232f297a57a5a743894a0e4a801fc3'),
+('tukang', '202cb962ac59075b964b07152d234b70'),
+('kasir', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pegawai`
+-- Table structure for table `t_pegawai`
 --
 
-CREATE TABLE IF NOT EXISTS `t_pegawai` (
+CREATE TABLE `t_pegawai` (
   `id_pegawai` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `nama` varchar(25) NOT NULL,
   `jns_kel` varchar(6) NOT NULL,
@@ -187,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `t_pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_pegawai`
+-- Dumping data for table `t_pegawai`
 --
 
 INSERT INTO `t_pegawai` (`id_pegawai`, `nama`, `jns_kel`, `tp_lahir`, `tgl_lahir`, `alamat`, `status`, `telp`, `foto`) VALUES
@@ -204,10 +206,10 @@ INSERT INTO `t_pegawai` (`id_pegawai`, `nama`, `jns_kel`, `tp_lahir`, `tgl_lahir
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pemesan`
+-- Table structure for table `t_pemesan`
 --
 
-CREATE TABLE IF NOT EXISTS `t_pemesan` (
+CREATE TABLE `t_pemesan` (
   `id_pemesan` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `kd_kavling` varchar(4) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `nama` varchar(25) NOT NULL,
@@ -226,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `t_pemesan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_pemesan`
+-- Dumping data for table `t_pemesan`
 --
 
 INSERT INTO `t_pemesan` (`id_pemesan`, `kd_kavling`, `nama`, `nik`, `jns_kel`, `tp_lahir`, `tgl_lahir`, `alamat`, `status`, `pekerjaan`, `telp`, `bank`, `foto`, `app`, `jual`) VALUES
@@ -263,10 +265,30 @@ INSERT INTO `t_pemesan` (`id_pemesan`, `kd_kavling`, `nama`, `nik`, `jns_kel`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_tipe`
+-- Table structure for table `t_pengeluaran`
 --
 
-CREATE TABLE IF NOT EXISTS `t_tipe` (
+CREATE TABLE `t_pengeluaran` (
+  `id_table` int(10) NOT NULL,
+  `kode_pegawai` varchar(3) NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `jumlah` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_pengeluaran`
+--
+
+INSERT INTO `t_pengeluaran` (`id_table`, `kode_pegawai`, `keterangan`, `jumlah`) VALUES
+(1, 'W11', 'Jual tisu', 1000000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_tipe`
+--
+
+CREATE TABLE `t_tipe` (
   `kd_tipe` varchar(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `tipe` varchar(7) NOT NULL,
   `hr_jual` int(9) NOT NULL,
@@ -290,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `t_tipe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_tipe`
+-- Dumping data for table `t_tipe`
 --
 
 INSERT INTO `t_tipe` (`kd_tipe`, `tipe`, `hr_jual`, `dp`, `kpr`, `jk_waktu`, `dinding`, `lantai`, `atap`, `plafon`, `pintu`, `wc`, `listrik`, `air`, `struktur`, `pondasi`, `carport`, `jalan`, `keterangan`, `gambar`) VALUES
@@ -305,10 +327,10 @@ INSERT INTO `t_tipe` (`kd_tipe`, `tipe`, `hr_jual`, `dp`, `kpr`, `jk_waktu`, `di
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_tukang`
+-- Table structure for table `t_tukang`
 --
 
-CREATE TABLE IF NOT EXISTS `t_tukang` (
+CREATE TABLE `t_tukang` (
   `kd_tukang` varchar(2) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `pekerjaan` varchar(25) NOT NULL,
   `jumlah` tinyint(2) NOT NULL,
@@ -317,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `t_tukang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_tukang`
+-- Dumping data for table `t_tukang`
 --
 
 INSERT INTO `t_tukang` (`kd_tukang`, `pekerjaan`, `jumlah`, `jm_kerja`, `biaya`) VALUES
@@ -336,59 +358,78 @@ INSERT INTO `t_tukang` (`kd_tukang`, `pekerjaan`, `jumlah`, `jm_kerja`, `biaya`)
 -- Indexes for table `t_jual`
 --
 ALTER TABLE `t_jual`
- ADD PRIMARY KEY (`kd_jual`), ADD KEY `kd_pemesan` (`id_pemesan`);
+  ADD PRIMARY KEY (`kd_jual`),
+  ADD KEY `kd_pemesan` (`id_pemesan`);
 
 --
 -- Indexes for table `t_kavling`
 --
 ALTER TABLE `t_kavling`
- ADD PRIMARY KEY (`kd_kavling`), ADD KEY `kd_tipe` (`kd_tipe`);
+  ADD PRIMARY KEY (`kd_kavling`),
+  ADD KEY `kd_tipe` (`kd_tipe`);
 
 --
 -- Indexes for table `t_konstruksi`
 --
 ALTER TABLE `t_konstruksi`
- ADD PRIMARY KEY (`kd_konstruksi`);
+  ADD PRIMARY KEY (`kd_konstruksi`);
 
 --
 -- Indexes for table `t_pegawai`
 --
 ALTER TABLE `t_pegawai`
- ADD PRIMARY KEY (`id_pegawai`);
+  ADD PRIMARY KEY (`id_pegawai`);
 
 --
 -- Indexes for table `t_pemesan`
 --
 ALTER TABLE `t_pemesan`
- ADD PRIMARY KEY (`id_pemesan`), ADD KEY `kd_kavling` (`kd_kavling`);
+  ADD PRIMARY KEY (`id_pemesan`),
+  ADD KEY `kd_kavling` (`kd_kavling`);
+
+--
+-- Indexes for table `t_pengeluaran`
+--
+ALTER TABLE `t_pengeluaran`
+  ADD PRIMARY KEY (`id_table`),
+  ADD KEY `kode_pegawai` (`kode_pegawai`);
 
 --
 -- Indexes for table `t_tipe`
 --
 ALTER TABLE `t_tipe`
- ADD PRIMARY KEY (`kd_tipe`);
+  ADD PRIMARY KEY (`kd_tipe`);
 
 --
 -- Indexes for table `t_tukang`
 --
 ALTER TABLE `t_tukang`
- ADD PRIMARY KEY (`kd_tukang`);
+  ADD PRIMARY KEY (`kd_tukang`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `t_jual`
+-- AUTO_INCREMENT for table `t_pengeluaran`
+--
+ALTER TABLE `t_pengeluaran`
+  MODIFY `id_table` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `t_jual`
 --
 ALTER TABLE `t_jual`
-ADD CONSTRAINT `t_jual_ibfk_2` FOREIGN KEY (`id_pemesan`) REFERENCES `t_pemesan` (`id_pemesan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `t_jual_ibfk_2` FOREIGN KEY (`id_pemesan`) REFERENCES `t_pemesan` (`id_pemesan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `t_kavling`
+-- Constraints for table `t_kavling`
 --
 ALTER TABLE `t_kavling`
-ADD CONSTRAINT `t_kavling_ibfk_1` FOREIGN KEY (`kd_tipe`) REFERENCES `t_tipe` (`kd_tipe`);
+  ADD CONSTRAINT `t_kavling_ibfk_1` FOREIGN KEY (`kd_tipe`) REFERENCES `t_tipe` (`kd_tipe`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
