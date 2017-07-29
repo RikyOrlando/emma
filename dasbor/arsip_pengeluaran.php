@@ -12,6 +12,7 @@ include "kon_db.php";
 			<th>Nomor</th>
 			<th>Kode / Nama Pegawai</th>
 			<th>Keterangan</th>
+			<th>Tanggal</th>
 			<th>Jumlah</th>
 			<th>Aksi</th>
 		</tr>
@@ -26,6 +27,12 @@ LEFT JOIN `t_pegawai` ON `t_pengeluaran`.`kode_pegawai` = `t_pegawai`.`id_pegawa
 			<td><?php echo $no;?></td>
 			<td><?php echo $row['kode_pegawai'];?> / <?php echo $row['nama'];?></td>
 			<td><?php echo $row['keterangan'];?></td>
+			<td><?php
+
+				$date = date_create($row['tanggal']);
+				echo date_format($date, 'd-m-Y');
+
+			?></td>
 			<td>Rp. <?php echo number_format($row['jumlah'], 2);?></td>
 			<td align="center">
 				<a href="?page=edit_pengeluaran&edit=<?php echo $row['id_table'];?>">Edit</a>

@@ -28,6 +28,53 @@ include "kon_db.php";
 			<td>Rp. <input name="jumlah" type="number" align="right"/></td>
 		</tr>
 		<tr>
+			<td align="left">Tanggal</td>
+			<td>
+				<select name="tgl">
+					<?php
+						for ($i=1; $i <= 31 ; $i++) { 
+							if($i < 10) {
+								$i = '0' .  $i;
+							}
+							if ($i == date('d')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+							
+						}
+					?>
+				</select>
+				/
+				<select name="bln">
+					<?php
+						for ($i=1; $i <= 12 ; $i++) { 
+							if($i < 10) {
+								$i = '0' .  $i;
+							}
+							if ($i == date('m')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+						}
+					?>
+				</select>
+				/
+				<select name="thn">
+					<?php
+						for ($i=2000; $i <= date('Y') ; $i++) { 
+							if ($i == date('Y')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+						}
+					?>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td></td>
 			<td><input name="pr" type="submit" value="Submit"/></td>
 		</tr>
@@ -39,8 +86,9 @@ include "kon_db.php";
 if (isset($_POST['pr'])) {
 	$kd=$_POST['kd_pgwai'];
 	$ket=$_POST['ket'];
+	$date = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
 	$jumlah=$_POST['jumlah'];
-	$query1= "INSERT INTO `t_pengeluaran`(`kode_pegawai`, `keterangan`, `jumlah`) VALUES ('$kd','$ket','$jumlah')";
+	$query1= "INSERT INTO `t_pengeluaran`(`kode_pegawai`, `keterangan`, `tanggal`, `jumlah`) VALUES ('$kd','$ket','$date','$jumlah')";
 	$sql= mysqli_query($koneksi, $query1);
 	if ($sql) {
 		?><script language="javascript">

@@ -11,7 +11,9 @@ if (isset($_GET['edit'])) {
 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
 <?php
 $sqli = mysqli_query($koneksi, "SELECT * FROM `t_pengeluaran` WHERE `id_table`='$id'");
-foreach ($sqli as $values): ?>
+foreach ($sqli as $values):
+$date = date_create($values['tanggal']);
+	?>
 
 	<table align="center">
 		<tr>
@@ -35,6 +37,53 @@ foreach ($sqli as $values): ?>
 			<td><textarea rows="3" cols="40" name="ket" placeholder="Keterangan belanja"><?php echo $values['keterangan'];?></textarea></td>
 		</tr>
 		<tr>
+			<td align="left">Tanggal</td>
+			<td>
+				<select name="tgl">
+					<?php
+						for ($i=1; $i <= 31 ; $i++) { 
+							if($i < 10) {
+								$i = '0' .  $i;
+							}
+							if ($i == date_format($date, 'd')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+							
+						}
+					?>
+				</select>
+				/
+				<select name="bln">
+					<?php
+						for ($i=1; $i <= 12 ; $i++) { 
+							if($i < 10) {
+								$i = '0' .  $i;
+							}
+							if ($i == date_format($date, 'm')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+						}
+					?>
+				</select>
+				/
+				<select name="thn">
+					<?php
+						for ($i=2000; $i <= date('Y') ; $i++) { 
+							if ($i == date_format($date, 'Y')) {
+								echo '<option value="' . $i . '" selected> '. $i . '</option>';
+							} else {
+								echo '<option value="' . $i . '"> '. $i . '</option>';
+							}
+						}
+					?>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td align="left">Jumlah</td>
 			<td>Rp. <input name="jumlah" type="number" align="right" value="<?php echo $values['jumlah'];?>" /></td>
 		</tr>
@@ -51,8 +100,9 @@ foreach ($sqli as $values): ?>
 if (isset($_POST['pr'])) {
 	$kd=$_POST['kd_pgwai'];
 	$ket=$_POST['ket'];
+	$date = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
 	$jumlah=$_POST['jumlah'];
-	$query1= "UPDATE `t_pengeluaran` SET `kode_pegawai`='$kd',`keterangan`='$ket',`jumlah`='$jumlah' WHERE `id_table`='$id'";
+	$query1= "UPDATE `t_pengeluaran` SET `kode_pegawai`='$kd',`keterangan`='$ket',`jumlah`='$jumlah',`tanggal`='$date' WHERE `id_table`='$id'";
 	$sql= mysqli_query($koneksi, $query1);
 	if ($sql) {
 		?><script language="javascript">
