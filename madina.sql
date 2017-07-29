@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 29, 2017 at 05:44 AM
+-- Generation Time: Jul 29, 2017 at 03:31 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -272,6 +272,7 @@ CREATE TABLE `t_pengeluaran` (
   `id_table` int(10) NOT NULL,
   `kode_pegawai` varchar(3) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
   `jumlah` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -279,8 +280,9 @@ CREATE TABLE `t_pengeluaran` (
 -- Dumping data for table `t_pengeluaran`
 --
 
-INSERT INTO `t_pengeluaran` (`id_table`, `kode_pegawai`, `keterangan`, `jumlah`) VALUES
-(1, 'W11', 'Jual tisu', 1000000);
+INSERT INTO `t_pengeluaran` (`id_table`, `kode_pegawai`, `keterangan`, `tanggal`, `jumlah`) VALUES
+(1, 'W11', 'Jual tisu', '2017-07-29', 1000000),
+(3, 'W11', 'Belanja sabun mandi', '2011-06-26', 867777);
 
 -- --------------------------------------------------------
 
@@ -414,7 +416,7 @@ ALTER TABLE `t_tukang`
 -- AUTO_INCREMENT for table `t_pengeluaran`
 --
 ALTER TABLE `t_pengeluaran`
-  MODIFY `id_table` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_table` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
